@@ -1,0 +1,9 @@
+<form method="post" enctype="multipart/form-data" #fileUploadForm>
+  <div class="form-group">
+    <label>Upload a file here</label>
+    <input type="file" name="uploadFile" placeholder="Upload file"
+           #uploadedFile (change)="onFileChange($event)">
+    <button type="submit" class="btn btn-default"
+            (click)="onSubmit(uploadedFile)" [ngClass]="{disabled : disabled}">Submit</button>
+  </div>
+</form>

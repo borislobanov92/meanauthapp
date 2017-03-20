@@ -5,7 +5,9 @@ const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
+const fileUpload = require('./api/upload');
 
+mongoose.Promise = global.Promise;
 
 // Connect to Database
 mongoose.connect(config.database);
@@ -24,6 +26,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users');
+const upload = require('./api/upload');
 
 // Port Number
 const port = 3000;
@@ -44,6 +47,8 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
+
+app.use('/api', upload);
 
 // Index Route
 app.get('/', (req, res) => {

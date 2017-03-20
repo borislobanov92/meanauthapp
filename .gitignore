@@ -4,6 +4,7 @@
 
 # dependencies
 /node_modules
+/config/database.js
 
 # IDEs and editors
 /.idea

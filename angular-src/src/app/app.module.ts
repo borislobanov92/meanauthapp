@@ -12,10 +12,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { UploadService } from './services/upload.service';
 import { AuthGuard } from './guards/auth.guard';
+import { FileUploadFormComponent } from './components/file-upload-form/file-upload-form.component';
+import { UploadedFilesListComponent } from './components/uploaded-files-list/uploaded-files-list.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
@@ -34,7 +38,10 @@ const appRoutes : Routes = [
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    FileUploadFormComponent,
+    UploadedFilesListComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ const appRoutes : Routes = [
   providers: [
     ValidateService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

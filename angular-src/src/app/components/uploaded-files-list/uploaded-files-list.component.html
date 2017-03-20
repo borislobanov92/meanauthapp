@@ -1,0 +1,18 @@
+<h2>Here is the list of your uploaded files</h2>
+<div *ngIf="uploadedFiles && uploadedFiles.length > 0">
+  <table class="table-striped">
+    <tr>
+      <th>Filename</th>
+      <th>Sum</th>
+      <th>Owner</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let file of uploadedFiles">
+      <td><a (click)="downloadFile(file.originalname)">{{ file.originalname }}</a></td>
+      <td>{{ file.sum }}</td>
+      <td>{{ file.owner_username }}</td>
+      <td><i class="glyphicon glyphicon-remove"
+             (click)="deleteFile(file)"></i></td>
+    </tr>
+  </table>
+</div>
