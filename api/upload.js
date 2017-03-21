@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     destination: DIR,
     filename: function (req, file, cb) {
         crypto.pseudoRandomBytes(16, function (err, raw) {
-            if (err) return cb(err)
+            if (err) return cb(err);
 
             cb(null, raw.toString('hex') + path.extname(file.originalname))
         })
@@ -43,7 +43,7 @@ router.get('/files/:username', (req, res, next) => {
     let username = req.params.username;
     Document.getAllDocumentsFromUser(username, (err, docs) => {
         if (err) throw err;
-        if(!docs) {
+        if (!docs) {
             return res.json({success: false, msg: 'No documents found'});
         }
         res.send(docs);
@@ -58,7 +58,7 @@ router.post('/files/:originalname', function (req, res, next) {
 
     Document.getDocumentByOriginalName(originalname, (err, document) => {
         if (err) throw err;
-        if(!document) {
+        if (!document) {
             return res.json({success: false, msg: 'No documents found'});
         }
         res.download(DIR + document.filename);
@@ -68,7 +68,7 @@ router.post('/files/:originalname', function (req, res, next) {
 // Upload file
 router.post('/upload', upload.single('uploadFile'), (req, res, next) => {
 
-    if(req.file) {
+    if (req.file) {
         let file = req.file;
         let owner = JSON.parse(req.body.owner);
         let split = file.originalname.split('.');
