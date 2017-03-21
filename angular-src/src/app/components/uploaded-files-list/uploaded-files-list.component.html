@@ -1,5 +1,8 @@
-<h2>Here is the list of your uploaded files</h2>
+<div *ngIf="!uploadedFiles || uploadedFiles.length <= 0">
+  <h2>You haven't uploaded any files yet</h2>
+</div>
 <div *ngIf="uploadedFiles && uploadedFiles.length > 0">
+  <h2>Here is the list of your uploaded files</h2>
   <table class="table-striped">
     <tr>
       <th>Filename</th>
@@ -11,8 +14,10 @@
       <td><a (click)="downloadFile(file.originalname)">{{ file.originalname }}</a></td>
       <td>{{ file.sum }}</td>
       <td>{{ file.owner_username }}</td>
-      <td><i class="glyphicon glyphicon-remove"
-             (click)="deleteFile(file)"></i></td>
+      <td>
+        <i class="glyphicon glyphicon-remove"
+             (click)="deleteFile(file)"></i>
+      </td>
     </tr>
   </table>
 </div>

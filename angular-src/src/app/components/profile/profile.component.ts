@@ -13,7 +13,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -23,7 +22,6 @@ export class ProfileComponent implements OnInit {
     err => {
       console.log(err);
       return false;
-    }
-    );
+    });
   }
 }

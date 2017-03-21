@@ -38,7 +38,6 @@ export class UploadService {
       return this.http.post(url, formData)
         .toPromise()
         .then(res => {
-          //console.log(res.json());
           return res.json();
         })
         .then(file => {
@@ -57,8 +56,6 @@ export class UploadService {
     return this.http.delete(url, options)
       .toPromise()
       .then(res => {
-        //console.log(res.json());
-
         let index = this.uploadedFiles
           .map(file => file["_id"])
           .indexOf(id);

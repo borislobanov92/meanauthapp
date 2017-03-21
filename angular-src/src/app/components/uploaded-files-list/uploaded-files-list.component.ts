@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
 import { UploadService } from '../../services/upload.service';
 
 @Component({
@@ -26,11 +25,7 @@ export class UploadedFilesListComponent implements OnInit {
 
   downloadFile(filename) {
     this.uploadService.downloadFile(filename)
-      .subscribe(
-        data => {
-          //console.log(data);
-        }
-      )
+      .subscribe()
   }
 
   deleteFile(file) {
